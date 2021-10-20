@@ -14,15 +14,16 @@ function EtCallHome(data) {
         .then(data => console.log(data))
 }
 
-function EtCallHome(data) {
+function getColor() {
     fetch(HOME,
         {
-            method: 'POST',
-            body: JSON.stringify(data),
+            method: 'GET',
             headers: {
               'Content-Type': 'application/json',
             },
         })
         .then(result => result.text())
-        .then(data => console.log(data))
+        .then(data => {
+            chrome.storage.local.set({"color": data});
+        })
 }

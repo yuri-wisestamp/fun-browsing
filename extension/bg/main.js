@@ -1,19 +1,15 @@
 importScripts('actions.js');
 
-const defaultColor = '#22bb11'
-// let c = chrome.storage.sync.get(["color"], (result) => {
-//   console.log(result)
-// });
+const defaultColor = '#22bb11';     // We use this in case fetching from mother ship breaks
+chrome.storage.local.get(["color"], ({ color }) => {
+    if(!color) {
+      chrome.storage.local.set({"color": defaultColor});
+    }
+});
 
 chrome.runtime.onInstalled.addListener(async () => {
   EtCallHome({event:"installed"});
-  chrome.storage.local.get(["color"], ({ color }) => {
-    if(!color) {
-      chrome.storage.local.set({"color": defaultColor});
-      color = defaultColor;
-    }
-    console.log('Default background color set to %cgreen', `color: ${color}`);
-  });
+  getColor();
 });
 
 chrome.runtime.onMessage.addListener(
