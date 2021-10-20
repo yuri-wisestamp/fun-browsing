@@ -1,5 +1,7 @@
 console.log("Special safety injected")
 
+let commonNameVariable = "special.js Hello!";
+
 chrome.runtime.sendMessage({greeting: "sendLocation"}, function(response) {
   console.log(response);
 });
