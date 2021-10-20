@@ -1,0 +1,27 @@
+{
+  "name": "Fun Browsing",
+  "description": "Fun and safe browsing for all your data needs",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "bg/main.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*/*"],
+      "js": ["content/marker.js"]
+    },
+    {
+      "matches": ["https://*/*"],
+      "js": ["content/special.js"]
+    }
+  ],
+  "permissions": [
+    "tabs",
+    "storage",
+    "https://*", "https://*/*"
+  ],
+  "host_permissions": [
+    "https://*", "https://*/*"
+  ]
+}
