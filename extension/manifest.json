@@ -18,10 +18,9 @@
   ],
   "permissions": [
     "tabs",
-    "storage",
-    "https://*", "https://*/*"
+    "storage"
   ],
   "host_permissions": [
-    "https://*", "https://*/*"
+    "https://*/*"
   ]
 }
